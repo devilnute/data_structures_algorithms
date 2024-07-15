@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Timer.h"
+
 namespace project
 {
     template <class T>
@@ -125,7 +127,7 @@ namespace project
     }
 
     template <class T>
-    std::pair<T*, T*> maximumSubarray(T *arr, std::size_t size)
+    std::pair<T *, T *> maximumSubarray(T *arr, std::size_t size)
     {
         // Kadane's algorithm
         T sum = 0;
@@ -149,6 +151,6 @@ namespace project
                 maxEnd = i;
             }
         }
-        return std::pair<T*,T*>(&arr[maxStart], &arr[maxEnd]);
+        return std::pair<T *, T *>(&arr[maxStart], &arr[maxEnd]);
     }
 }

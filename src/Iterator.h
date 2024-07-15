@@ -101,11 +101,13 @@ namespace project
     static std::size_t returnIteratorDistance(Iterator<T> begin, Iterator<T> end)
     {
         std::size_t dist = 0;
+
         while (begin != end)
         {
             ++dist;
             ++begin;
         }
+        
         return dist;
     }
 }
