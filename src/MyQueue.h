@@ -18,7 +18,7 @@ namespace project
         T &back();
         const T &back() const;
         bool empty() const;
-        std::size_t size() const;
+        size_t size() const;
 
     private:
         Container container_;
@@ -87,7 +87,7 @@ namespace project
     }
 
     template <class T, class Container>
-    std::size_t Queue<T, Container>::size() const
+    size_t Queue<T, Container>::size() const
     {
         return container_.size();
     }

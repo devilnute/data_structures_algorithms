@@ -15,7 +15,7 @@ namespace project
         void pop();
         const T &top() const;
         bool empty() const;
-        std::size_t size() const;
+        size_t size() const;
 
     private:
         Container container_;
@@ -79,7 +79,7 @@ namespace project
     }
 
     template <class T, class Container>
-    std::size_t PriorityQueue<T, Container>::size() const
+    size_t PriorityQueue<T, Container>::size() const
     {
         return container_.size();
     }
