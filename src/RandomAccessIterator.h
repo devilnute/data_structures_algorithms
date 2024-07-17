@@ -4,6 +4,7 @@
 
 namespace project
 {
+
     template <class T>
     class Iterator
     {

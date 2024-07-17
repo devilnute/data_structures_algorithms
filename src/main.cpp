@@ -1,24 +1,22 @@
 #include <iostream>
-#include <ctime>
+#include <queue>
 
-#include "SearchAlgorithms.h"
-#include "SortingAlgorithms.h"
-#include "Timer.h"
+#include "MyStack.h"
+
+#include "PriorityQueue.h"
 
 int main()
 {
-    srand(time(NULL));
+    project::Stack<int> st;
 
-    std::size_t size = 9;
-    int *arr = new int[size]{121, 23124, 552346, 1223, 53, 1623, 51, 28, 1245};
+    project::PriorityQueue<int> q;
 
-    project::mergeSort(arr, size);
+    q.push(1);
+    q.push(423);
+    q.push(2);
 
-    for (int i = 0; i < size; ++i)
-    {
-        std::cout << arr[i] << std::endl;
-    }
+    std::cout << q.top();
+    
 
-    delete[] arr;
     return 0;
 }
