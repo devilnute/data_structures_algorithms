@@ -32,6 +32,7 @@ int main()
         switch (choice)
         {
         case 1:
+        {
             while (!exit_2)
             {
                 std::cout << "1. Binary Search Tree\n"
@@ -128,27 +129,166 @@ int main()
                             break;
                         }
                         case 4:
+                        {
                             tree.inorder();
                             break;
+                        }
                         case 5:
-                            tree.inorder();
+                        {
+                            tree.preorder();
                             break;
+                        }
                         case 6:
-                            tree.inorder();
+                        {
+                            tree.postorder();
                             break;
+                        }
                         case 7:
+                        {
                             exit_3 = true;
                             break;
+                        }
                         default:
+                        {
                             std::cout << "Invalid choice, try again\n";
                             std::cin.clear();
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                             break;
                         }
+                        }
                     }
                     break;
                 }
                 case 2:
+                {
+                    project::List<int> list;
+                    std::cout << "List created\n";
+                    while (!exit_3)
+                    {
+                        std::cout << "1. Push front\n"
+                                     "2. Push back\n"
+                                     "3. Pop front\n"
+                                     "4. Pop back\n"
+                                     "5. Print list\n"
+                                     "6. Print size\n"
+                                     "7. Back\n"
+                                     "> ";
+                        std::cin >> choice;
+                        switch (choice)
+                        {
+                        case 1:
+                        {
+                            int e = 0;
+                            std::cout << "> ";
+                            std::cin >> e;
+                            if (std::cin.fail())
+                            {
+                                std::cout << "Invalid argument\n";
+                                std::cin.clear();
+                                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            }
+                            else
+                            {
+                                list.push_front(e);
+                            }
+                            break;
+                        }
+                        case 2:
+                        {
+                            int e = 0;
+                            std::cout << "> ";
+                            std::cin >> e;
+                            if (std::cin.fail())
+                            {
+                                std::cout << "Invalid argument\n";
+                                std::cin.clear();
+                                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            }
+                            else
+                            {
+                                list.push_back(e);
+                            }
+                            break;
+                        }
+                        case 3:
+                        {
+                            if (!list.empty())
+                            {
+                                list.pop_front();
+                            }
+                            
+                            break;
+                        }
+                        case 4:
+                        {
+                            if (!list.empty())
+                            {
+                                list.pop_back();
+                            }
+                            break;
+                        }
+                        case 5:
+                        {
+                            if (!list.empty())
+                            {
+                                list.print();
+                            }
+                            break;
+                        }
+                        case 6:
+                        {
+                            std::cout << list.size() << '\n';
+                            break;
+                        }
+                        case 7:
+                        {
+                            exit_3 = true;
+                            break;
+                        }
+                        default:
+                        {
+                            std::cout << "Invalid choice, try again\n";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            break;
+                        }
+                        }
+                    }
+                    break;
+                }
+                case 3:
+                {
+                    break;
+                }
+                case 4:
+                {
+                    break;
+                }
+                case 5:
+                {
+                    break;
+                }
+                case 6:
+                {
+                    break;
+                }
+                case 7:
+                {
+                    break;
+                }
+                case 8:
+                {
+                    break;
+                }
+                case 9:
+                {
+                    break;
+                }
+                case 10:
+                {
+                    break;
+                }
+                case 11:
                 {
                     break;
                 }
@@ -156,14 +296,18 @@ int main()
                     exit_2 = true;
                     break;
                 default:
+                {
                     std::cout << "Invalid choice, try again\n";
                     std::cin.clear();
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                     break;
                 }
+                }
             }
             break;
+        }
         case 2:
+        {
             std::cout << "1. Linear Search\n"
                          "2. Iterative Binary Search\n"
                          "3. Recursive Binary Search\n"
@@ -181,16 +325,22 @@ int main()
             std::cout << "> ";
             std::cin >> choice;
             break;
+        }
+
         case 3:
+        {
             exit = true;
             std::cout << "Exiting the program...\n";
             break;
+        }
 
         default:
+        {
             std::cout << "Invalid choice, try again\n";
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             break;
+        }
         }
     }
 

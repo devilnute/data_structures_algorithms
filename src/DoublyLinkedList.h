@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <iostream>
 #include <initializer_list>
 
 #include "MyException.h"
@@ -38,6 +39,8 @@ namespace project
         bool empty() const;
         size_t size() const;
 
+        void print() const;
+
     private:
         ListNode<T> *head_;
         ListNode<T> *tail_;
@@ -50,7 +53,7 @@ namespace project
     template <class T>
     List<T>::List(std::initializer_list<T> init)
     {
-        for(const T& e: init)
+        for (const T &e : init)
         {
             push_back(e);
         }
@@ -193,5 +196,17 @@ namespace project
     size_t List<T>::size() const
     {
         return size_;
+    }
+
+    template <class T>
+    void List<T>::print() const
+    {
+        ListNode<T> *current = head_;
+        while (current)
+        {
+            std::cout << current->data << ' ';
+            current = current->next;
+        }
+        std::cout << std::endl;
     }
 }
