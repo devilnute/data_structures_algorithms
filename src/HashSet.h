@@ -1,4 +1,7 @@
-#include <iostream>
+#pragma once
+
+#include <cstddef>
+#include <optional>
 
 #include "DoublyLinkedList.h"
 #include "DynamicArray.h"
@@ -16,7 +19,7 @@ namespace project
         void remove(const KeyType &key);
 
     private:
-        project::Vector<project::List<KeyType>>table;
+        project::Vector<project::List<KeyType>> table;
         Hash hash_fn;
 
         size_t get_index(const KeyType &key) const;
@@ -40,8 +43,7 @@ namespace project
         {
             if (element == key)
             {
-                std::cerr << "Key already exists!" << std::endl;
-                return;
+                throw Exception("Key already exists!");
             }
         }
         table[index].emplace_back(key);

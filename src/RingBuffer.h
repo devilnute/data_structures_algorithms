@@ -43,8 +43,7 @@ namespace project
     {
         if (isFull())
         {
-            std::cerr << "Buffer is full" << std::endl;
-            return;
+            throw Exception("Buffer is full!");
         }
         buffer[head] = data;
         head = (head + 1) % buffer.size();
@@ -56,8 +55,7 @@ namespace project
     {
         if (isEmpty())
         {
-            std::cerr << "Buffer is empty" << std::endl;
-            return T();
+            throw Exception("Buffer is empty!");
         }
         T data = buffer[tail];
         tail = (tail + 1) % buffer.size();

@@ -1,6 +1,7 @@
 #pragma once
 
-#include <iostream>
+#include <cstddef>
+#include <optional>
 
 #include "DoublyLinkedList.h"
 #include "DynamicArray.h"
@@ -42,8 +43,7 @@ namespace project
         {
             if (pair.first == key)
             {
-                std::cerr << "Key already exists!" << std::endl;
-                return;
+                throw Exception("Key already exists!");
             }
         }
         table_[index].emplace_back(key, value);

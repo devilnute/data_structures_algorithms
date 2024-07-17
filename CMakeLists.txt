@@ -4,21 +4,18 @@ project(${PROJECT_NAME})
 
 add_executable(${PROJECT_NAME}
 src/BinarySearchTree.h
-src/CircularBuffer.h
 src/DoublyLinkedList.h
 src/DynamicArray.h
 src/ForwardList.h
 src/HashMap.h
 src/HashSet.h
-src/Heap.h
 src/main.cpp
-src/Matrix.h
 src/MyDeque.h
 src/MyException.cpp
 src/MyException.h
 src/MyQueue.h
 src/MyStack.h
-src/MyStream.h
+src/Pair.h
 src/PriorityQueue.h
 src/RandomAccessIterator.h
 src/RingBuffer.h
