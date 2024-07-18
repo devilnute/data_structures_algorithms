@@ -16,8 +16,10 @@ namespace project
         HashMap(size_t size = 10);
 
         void insert(const KeyType &key, const ValueType &value);
-        bool find(const KeyType &key, ValueType &value) const;
+        bool find(const KeyType &key);
         void remove(const KeyType &key);
+
+        void print();
 
     private:
         project::Vector<project::List<project::Pair<KeyType, ValueType>>> table_;
@@ -38,28 +40,32 @@ namespace project
     template <class KeyType, class ValueType, class Hash>
     void HashMap<KeyType, ValueType, Hash>::insert(const KeyType &key, const ValueType &value)
     {
+
         size_t index = get_index(key);
-        for (auto &pair : table_[index])
+        ListNode<Pair<KeyType, ValueType>> *current = table_[index].getHead();
+        while (current)
         {
-            if (pair.first == key)
+            if (current->data.first == key)
             {
                 throw Exception("Key already exists!");
             }
+            current = current->next;
         }
-        table_[index].emplace_back(key, value);
+        table_[index].push_back(Pair{key, value});
     }
 
     template <class KeyType, class ValueType, class Hash>
-    bool HashMap<KeyType, ValueType, Hash>::find(const KeyType &key, ValueType &value) const
+    bool HashMap<KeyType, ValueType, Hash>::find(const KeyType &key)
     {
         size_t index = get_index(key);
-        for (const auto &pair : table_[index])
+        ListNode<Pair<KeyType, ValueType>> *current = table_[index].getHead();
+        while (current)
         {
-            if (pair.first == key)
+            if (current->data.first == key)
             {
-                value = pair.second;
                 return true;
             }
+            current = current->next;
         }
         return false;
     }
@@ -68,12 +74,29 @@ namespace project
     void HashMap<KeyType, ValueType, Hash>::remove(const KeyType &key)
     {
         size_t index = get_index(key);
-        for (auto it = table_[index].begin(); it != table_[index].end(); ++it)
+        ListNode<Pair<KeyType, ValueType>> *current = table_[index].getHead();
+        while (current)
         {
-            if (it->first == key)
+            if (current->data.first == key)
             {
-                table_[index].erase(it);
+                table_[index].remove(current->data);
                 return;
+            }
+            current = current->next;
+        }
+    }
+
+    template <class KeyType, class ValueType, class Hash>
+    void HashMap<KeyType, ValueType, Hash>::print()
+    {
+        for (size_t i = 0; i < table_.size(); ++i)
+        {
+
+            ListNode<Pair<KeyType, ValueType>> *current = table_[i].getHead();
+            while (current)
+            {
+                std::cout << current->data.first << ": " << current->data.second << '\n';
+                current = current->next;
             }
         }
     }

@@ -31,6 +31,8 @@ namespace project
         bool empty() const;
         size_t size() const;
 
+        void print() const;
+
     private:
         struct Node
         {
@@ -304,5 +306,20 @@ namespace project
         }
 
         throw Exception("Index out of range");
+    }
+
+    template <class T>
+    void Deque<T>::print() const
+    {
+        Node *current = head_;
+        while (current)
+        {
+            for (size_t i = current->front_; i <= current->back_; ++i)
+            {
+                std::cout << current->data_[i] << " ";
+            }
+            current = current->next_;
+        }
+        std::cout << std::endl;
     }
 }

@@ -3,6 +3,8 @@
 #include <cstddef>
 #include <iostream>
 
+#include "DynamicArray.h"
+
 namespace project
 {
     template <class T>

@@ -32,6 +32,8 @@ namespace project
         bool empty() const;
         size_t size() const;
 
+        void print() const;
+
     private:
         ForwardListNode<T> *head_;
         size_t size_;
@@ -113,5 +115,17 @@ namespace project
     size_t ForwardList<T>::size() const
     {
         return size_;
+    }
+
+    template <class T>
+    void ForwardList<T>::print() const
+    {
+        ForwardListNode<T> *current = head_;
+        while(current)
+        {
+            std::cout << current->data << ' ';
+            current = current->next;
+        }
+        std::cout << std::endl;
     }
 }

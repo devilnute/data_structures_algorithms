@@ -28,6 +28,7 @@ namespace project
 
         void push_front(const T &value);
         void push_back(const T &value);
+        void remove(const T &value);
         void pop_front();
         void pop_back();
 
@@ -38,6 +39,7 @@ namespace project
 
         bool empty() const;
         size_t size() const;
+        ListNode<T> *getHead();
 
         void print() const;
 
@@ -208,5 +210,50 @@ namespace project
             current = current->next;
         }
         std::cout << std::endl;
+    }
+
+    template <class T>
+    void List<T>::remove(const T &value)
+    {
+        ListNode<T> *current = head_;
+
+        while (current)
+        {
+            if (current->data == value)
+            {
+                ListNode<T> *to_delete = current;
+                if (current->prev)
+                {
+                    current->prev->next = current->next;
+                }
+                else
+                {
+                    head_ = current->next;
+                }
+
+                if (current->next)
+                {
+                    current->next->prev = current->prev;
+                }
+                else
+                {
+                    tail_ = current->prev;
+                }
+
+                current = current->next;
+                delete to_delete;
+                --size_;
+            }
+            else
+            {
+                current = current->next;
+            }
+        }
+    }
+
+    template<class T>
+    ListNode<T> *List<T>::getHead()
+    {
+        return head_;
     }
 }

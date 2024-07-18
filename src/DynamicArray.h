@@ -29,8 +29,12 @@ namespace project
         size_t capacity() const;
         void resize(size_t newSize);
 
+        T &back();
+
         void push_back(const T &value);
         void pop_back();
+
+        void print() const;
 
     private:
         T *data_;
@@ -81,6 +85,12 @@ namespace project
     Vector<T>::~Vector()
     {
         delete[] data_;
+    }
+
+    template <class T>
+    T &Vector<T>::back()
+    {
+        return *(data_ + size_ - 1);
     }
 
     template <class T>
@@ -196,5 +206,15 @@ namespace project
     bool Vector<T>::empty() const
     {
         return size_ == 0;
+    }
+
+    template <class T>
+    void Vector<T>::print() const
+    {
+        for (size_t i = 0; i < size_;++i)
+        {
+            std::cout << data_[i] << ' ';
+        }
+        std::cout << std::endl;
     }
 }
